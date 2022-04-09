@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EmployeeManagement.Models.EmployeeInfo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+<button onclick="location.href='@Url.Action("Create", "Employee")'" type="button" class="btn btn-info btn-lg">Create New</button>
+
+</p>
+
+<div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h1 class="card-title">Employees List</h1>
+
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                       <th>ID</th>
+                      <th>Name</th>
+                      <th>National ID</th>
+                      <th>Department</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach (var item in Model) {
+                    <tr>
+                      <td>@item.EmployeeId</td>
+                      <td>@item.EmployeeName</td>
+                      <td>@item.Nid</td>
+                      <td>@item.DepartmentName</td>
+                      <td>
+                          <button onclick="location.href='@Url.Action("Edit", "Employee",new{id=item.EmployeeId})'" type="button" class="btn btn-warning">Edit</button>
+
+                          <button onclick="location.href='@Url.Action("Delete", "Employee",new{id=item.EmployeeId})'" type="button" class="btn btn-danger">Delete</button>
+
+                    </tr>
+                      }
+                   
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>

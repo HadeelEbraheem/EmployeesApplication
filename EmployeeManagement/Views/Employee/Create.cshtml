@@ -1,0 +1,45 @@
+﻿@model EmployeeManagement.Models.EmployeeInfo
+
+@{
+    ViewData["Title"] = "Create";
+}
+ 
+
+<div class="card card-cyan">
+   
+              <div class="card-header">
+                <h3 class="card-title">Employee Information</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card-body">
+
+                  <div class="form-group">
+                    <label for="EmployeeName">Employee Name</label>
+                     <input type="text" asp-for="EmployeeName" class="form-control" maxlength=50 required />
+                        <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="Nid">National ID</label>
+                   <input type="text" asp-for="Nid"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  class="form-control" pattern=".{10,10}" maxlength=10 required title="should be 10 digits"/>
+                        <span asp-validation-for="Nid" class="text-danger"></span>
+                  </div>
+                 <div class="form-group">
+                    <label for="DepartmentName">Department Name</label>
+                     <input type="text" asp-for="DepartmentName" class="form-control" maxlength=50 required/>
+                        <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                  </div>
+                 
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button> <span> &nbsp;  &nbsp;</span> <a asp-action="Index">Back to List</a>
+                </div>
+              </form>
+            </div>
+
+
+        
